@@ -298,6 +298,11 @@
             const allocated_ips = $("#client_allocated_ips").val().split(",");
             const allowed_ips = $("#client_allowed_ips").val().split(",");
             let use_server_dns = false;
+            let extra_allowed_ips = [];
+
+            if( len($("#_client_extra_allowed_ips").val()) > 0) {
+                extra_allowed_ips = $("#_client_extra_allowed_ips").val().split(",");
+            }
 
             if ($("#use_server_dns").is(':checked')){
                 use_server_dns = true;
@@ -310,7 +315,7 @@
             }
 
             const data = {"name": name, "email": email, "allocated_ips": allocated_ips, "allowed_ips": allowed_ips,
-                "use_server_dns": use_server_dns, "enabled": enabled};
+                "extra_allowed_ips": extra_allowed_ips, "use_server_dns": use_server_dns, "enabled": enabled};
 
             $.ajax({
                 cache: false,
